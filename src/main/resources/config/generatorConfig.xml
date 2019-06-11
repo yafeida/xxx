@@ -19,7 +19,7 @@
 		
 		<jdbcConnection 
 			driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://127.0.0.1:3306/wx"
+			connectionURL="jdbc:mysql://192.168.1.90:3306/weixin"
 			userId="root" 
 			password="root">
 		</jdbcConnection>
@@ -51,7 +51,7 @@
 		</javaClientGenerator>
 		
 		<!-- 配置表信息,tableName="%"代表生成所有表信息 -->
-		<table tableName="wx_user" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" enableUpdateByExample="true">
+		<table tableName="wx_order" enableCountByExample="true" enableDeleteByExample="true" enableSelectByExample="true" enableUpdateByExample="true">
 			<!-- schema即为数据库名 tableName为对应的数据库表 domainObjectName是要生成的实体类 enable*ByExample 是否生成 example类   -->
 			
 			<!-- 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate -->

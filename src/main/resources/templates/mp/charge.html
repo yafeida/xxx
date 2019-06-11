@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>运营商客户服务中心</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+<link rel="stylesheet" data-th-href="@{css/weui/weui.css}">
+<link rel="stylesheet" data-th-href="@{css/weui/weuix.css}">
+<script data-th-src="@{js/jquery.min.js}"></script>
+<script data-th-src="@{js/weui/zepto.min.js}"></script>
+<script data-th-src="@{js/weui/zepto.weui.js}"></script>
+<script data-th-src="@{js/weui/iscroll-lite.js}"></script>
+<script data-th-src="@{js/mp/charge.js}"></script>
+<style type="text/css">
+	html{
+		touch-action: pan-y;			/* 启用单指垂直平移手势，该样式取消后,页面会出现手势滑动警告 */
+	}
+</style>
+</head>
+<body  class="page-bg">
+	<div class="weui-tab" id="t3" style="height:44px;">
+		<div class="weui-navbar">
+			<div class="weui-navbar__item">话费充值</div>
+			<div class="weui-navbar__item">Q币充值</div>
+			<div class="weui-navbar__item">视频会员</div>
+		</div>
+	</div>
+	<div class="weui-cells">
+		<div class="weui-cell">
+			<div class="weui-cell__bd">
+				<!-- 添加正则判断，验证手机号是否合法 -->
+				<input class="weui-input" id="phone" placeholder="请输入充值号码" type="tel" maxlength="11" 
+					   onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" 
+					   oninput="checkPhoneNumber(this.value)"/>
+				<!-- 输入手机号后查询手机号信息，替换此处的文字 -->
+				<p class="yunyingshang">移动/联通/电信/虚商</p>
+			</div>
+		</div>
+	</div>
+	<div class="weui-pay">
+		<div id="package">
+			<ul class="weui-payselect-ul">
+				<!-- 默认话费包，当输入手机号信息合法后会隐藏该DIV -->
+				<li class="weui-payselect-li"><a class="weui-payselect-a">10元</a></li>
+				<li class="weui-payselect-li"><a class="weui-payselect-a">20元</a></li>
+				<li class="weui-payselect-li"><a class="weui-payselect-a">30元</a></li>
+				<li class="weui-payselect-li"><a class="weui-payselect-a">50元</a></li>
+				<li class="weui-payselect-li"><a class="weui-payselect-a">100元</a></li>
+				<li class="weui-payselect-li"><a class="weui-payselect-a">200元</a></li>
+				<li class="weui-payselect-li"><a class="weui-payselect-a">300元</a></li>
+				<li class="weui-payselect-li"><a class="weui-payselect-a">500元</a></li>
+				<li class="weui-payselect-li"><a class="weui-payselect-a">其他金额</a></li>
+			</ul>
+		</div>
+		<!-- 对输入的手机号信息进行验证，验证通过返回该手机号信息，然后将该手机号对应的运营商的话费包显示到下面的div中 -->
+		<div id="package2" style="display: none">
+			<ul class="weui-payselect-ul" id="package2-fee">
+			</ul>
+		</div>
+		<!-- 任意金额输入框 -->
+		<div class="amount" style="display: none;">
+				<input class="weui-input" type="tel" id="anyAmount" placeholder="0.01~1000任意金额"
+					maxlength="6" vMin="1" vType="doubleZ" oninput="changeFee()" />
+				<p class="discount"></p>
+		</div>
+		<a href="javascript:;" class="weui-btn weui-btn_primary" id="submitProm" onclick="submitForm();">提交充值</a>
+	</div>
+	<div>
+		<p class="eTitle">更多服务</p>
+		<div class="weui-grids grids-small">
+			<a href="javascript:;" class="grid">
+				<div class="weui-grid__icon">
+					<img src="../img/qq.png" alt="">
+				</div>
+				<p class="weui-grid__label">Q币充值</p>
+			</a> 
+			<a href="javascript:;" class="grid">
+				<div class="weui-grid__icon">
+					<img src="" alt="">
+				</div>
+				<p class="weui-grid__label">列表</p>
+			</a> 
+			<a href="javascript:;" class="grid">
+				<div class="weui-grid__icon">
+					<img src="" alt="">
+				</div>
+				<p class="weui-grid__label">QQ</p> 
+			</a> 
+			<a href="javascript:;" class="grid">
+				<div class="weui-grid__icon">
+					<img src="" alt="">
+				</div>
+				<p class="weui-grid__label">弹出</p>
+			</a> 
+			<a href="javascript:;" class="grid">
+				<div class="weui-grid__icon">
+					<img src="" alt="">
+				</div>
+				<p class="weui-grid__label">进度</p>
+			</a> 
+			<a href="javascript:;" class="grid">
+				<div class="weui-grid__icon">
+					<img src="" alt="">
+				</div>
+				<p class="weui-grid__label">消息</p>
+			</a> 
+			<a href="javascript:;" class="grid">
+				<div class="weui-grid__icon">
+					<img src="" alt="">
+				</div>
+				<p class="weui-grid__label">文章</p>
+			</a> 
+			<a href="javascript:;" class="grid">
+				<div class="weui-grid__icon">
+					<img src="" alt="">
+				</div>
+				<p class="weui-grid__label">菜单</p>
+			</a>
+		</div>
+	</div>
+
+</body>
+</html>

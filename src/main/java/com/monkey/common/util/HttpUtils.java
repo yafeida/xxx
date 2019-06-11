@@ -38,6 +38,7 @@ public class HttpUtils {
     public static String sendGet(String url, String param) throws IOException {
         String urlNameString = url + "?" + param;
         URL realUrl = new URL(urlNameString);
+        System.out.println("realUrl : "+realUrl);
         URLConnection connection = realUrl.openConnection();
         StringBuilder result = new StringBuilder();
         connection.setRequestProperty(USER_AGENT, USER_AGENT_VALUE);

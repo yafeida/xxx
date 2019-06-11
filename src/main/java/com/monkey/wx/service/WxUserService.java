@@ -1,0 +1,45 @@
+package com.monkey.wx.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.monkey.wx.dao.WxUserMapper;
+import com.monkey.wx.domain.WxUser;
+import com.monkey.wx.domain.WxUserExample;
+import com.monkey.wx.domain.WxUserExample.Criteria;
+
+@Service
+public class WxUserService {
+	
+	@Autowired
+	WxUserMapper wxUserMapper;
+
+	public List<WxUser> list(WxUser wxUser){
+		WxUserExample wuEx = new WxUserExample();
+		Criteria c = wuEx.createCriteria().andDelFlagEqualTo(1);
+		if(wxUser.getWxName() != null && !"".equals(wxUser.getWxName())){
+			c.andWxNameEqualTo(wxUser.getWxName());
+		}
+		if(wxUser.getChannelPerson() != null && !"".equals(wxUser.getChannelPerson())){
+			c.andChannelPersonEqualTo(wxUser.getChannelPerson());
+		}
+		if(wxUser.getTitle() != null && !"".equals(wxUser.getTitle())){
+			c.andTitleEqualTo(wxUser.getTitle());
+		}
+		return wxUserMapper.selectByExample(wuEx);
+	}
+	
+	public void delete(String ids){
+		String[] idArr = ids.split(",");
+		for(String id : idArr){
+			WxUserExample wuEx = new WxUserExample();
+			wuEx.createCriteria().andIdEqualTo(id);
+			WxUser wxUser = new WxUser();
+			wxUser.setDelFlag(0);
+			wxUserMapper.updateByExampleSelective(wxUser, wuEx);
+		}
+	}
+	
+}

@@ -1,0 +1,139 @@
+<div class="modal fade" id="wxUser-add" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title pull-left" id="user-add-modal-title">新增客户</h3>
+            </div>
+            <div class="modal-body">
+                <form id="wxUser-add-form">
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 页面标题：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="title" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 公众号名称：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="wxName" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 联系人姓名：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="contactName" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 联系人手机：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="contactPhone" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 客服手机：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="kfPhone" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 客服微信号：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="kfWx" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 客服微信二维码：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="kfWxEwm" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 充值平台用户名：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="billName" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 充值平台密钥：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="billKey" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 归属渠道：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="channelPerson" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-save" id="user-add-button" name="save">保存</button>
+                <button type="button" class="btn btn-secondary btn-close">关闭</button>
+                <button class="btn-hide"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-src="@{js/app/wx/wxUser/wxUserAdd.js}"></script>

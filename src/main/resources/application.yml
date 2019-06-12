@@ -8,7 +8,8 @@ spring:
       # 数据库访问配置, 使用druid数据源 
       db-type: com.alibaba.druid.pool.DruidDataSource
       driverClassName: com.mysql.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/wx?useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://192.168.1.90:3306/weixin?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+  #    url: jdbc:mysql://127.0.0.1:3306/wx?useUnicode=true&characterEncoding=UTF-8
       username: root
       password: root
       # 连接池配置
@@ -162,7 +163,7 @@ monkey:
     # rememberMe cookie有效时长，默认86400秒，即一天
     cookieTimeout: 86400
     # 免认证的路径配置，如静态资源，druid监控页面，注册页面，验证码请求等
-    anonUrl: /css/**,/js/**,/fonts/**,/img/**,/druid/**,/user/regist,/gifCode,/,/actuator/**,/test/**
+    anonUrl: /css/**,/js/**,/fonts/**,/img/**,/druid/**,/user/regist,/gifCode,/,/actuator/**,/test/**,/charge,/getPhoneInfo,/submitRecharge,/chargeBillCallback
     # 登录 url
     loginUrl: /login
     # 登录成功后跳转的 url

@@ -1,4 +1,4 @@
-package com.monkey.system.controller;
+package com.monkey.wx.controller;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
@@ -12,7 +12,7 @@ import com.monkey.common.controller.BaseController;
 import com.monkey.system.domain.User;
 
 @Controller
-public class OrderController extends BaseController {
+public class WxOrderController extends BaseController {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@Log("获取订单信息")

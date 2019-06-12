@@ -25,6 +25,8 @@ public class WxOrder {
 
     private String zfTime;
 
+    private String zfCallbackTime;
+
     private String transactionId;
 
     private Integer czStatus;
@@ -32,6 +34,8 @@ public class WxOrder {
     private String czMsg;
 
     private String czTime;
+
+    private String czCallbackTime;
 
     private String agent;
 
@@ -133,6 +137,14 @@ public class WxOrder {
         this.zfTime = zfTime == null ? null : zfTime.trim();
     }
 
+    public String getZfCallbackTime() {
+        return zfCallbackTime;
+    }
+
+    public void setZfCallbackTime(String zfCallbackTime) {
+        this.zfCallbackTime = zfCallbackTime == null ? null : zfCallbackTime.trim();
+    }
+
     public String getTransactionId() {
         return transactionId;
     }
@@ -163,6 +175,14 @@ public class WxOrder {
 
     public void setCzTime(String czTime) {
         this.czTime = czTime == null ? null : czTime.trim();
+    }
+
+    public String getCzCallbackTime() {
+        return czCallbackTime;
+    }
+
+    public void setCzCallbackTime(String czCallbackTime) {
+        this.czCallbackTime = czCallbackTime == null ? null : czCallbackTime.trim();
     }
 
     public String getAgent() {

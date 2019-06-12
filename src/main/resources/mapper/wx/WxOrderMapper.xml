@@ -1,45 +1,47 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.monkey.wx.dao.WxOrderMapper">
-  <resultMap id="BaseResultMap" type="com.monkey.wx.domain.WxOrder">
-    <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="user_id" jdbcType="VARCHAR" property="userId" />
-    <result column="order_id" jdbcType="VARCHAR" property="orderId" />
-    <result column="up_order_id" jdbcType="VARCHAR" property="upOrderId" />
-    <result column="open_id" jdbcType="VARCHAR" property="openId" />
-    <result column="ip" jdbcType="VARCHAR" property="ip" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="fee" jdbcType="DOUBLE" property="fee" />
-    <result column="disprice" jdbcType="DOUBLE" property="disprice" />
-    <result column="zf_status" jdbcType="INTEGER" property="zfStatus" />
-    <result column="zf_msg" jdbcType="VARCHAR" property="zfMsg" />
-    <result column="zf_time" jdbcType="VARCHAR" property="zfTime" />
-    <result column="transaction_id" jdbcType="VARCHAR" property="transactionId" />
-    <result column="cz_status" jdbcType="INTEGER" property="czStatus" />
-    <result column="cz_msg" jdbcType="VARCHAR" property="czMsg" />
-    <result column="cz_time" jdbcType="VARCHAR" property="czTime" />
-    <result column="agent" jdbcType="VARCHAR" property="agent" />
-    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.monkey.wx.dao.WxOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.monkey.wx.domain.WxOrder" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="up_order_id" property="upOrderId" jdbcType="VARCHAR" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="fee" property="fee" jdbcType="DOUBLE" />
+    <result column="disprice" property="disprice" jdbcType="DOUBLE" />
+    <result column="zf_status" property="zfStatus" jdbcType="INTEGER" />
+    <result column="zf_msg" property="zfMsg" jdbcType="VARCHAR" />
+    <result column="zf_time" property="zfTime" jdbcType="VARCHAR" />
+    <result column="zf_callback_time" property="zfCallbackTime" jdbcType="VARCHAR" />
+    <result column="transaction_id" property="transactionId" jdbcType="VARCHAR" />
+    <result column="cz_status" property="czStatus" jdbcType="INTEGER" />
+    <result column="cz_msg" property="czMsg" jdbcType="VARCHAR" />
+    <result column="cz_time" property="czTime" jdbcType="VARCHAR" />
+    <result column="cz_callback_time" property="czCallbackTime" jdbcType="VARCHAR" />
+    <result column="agent" property="agent" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -50,25 +52,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue">
+                <when test="criterion.singleValue" >
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue">
+                <when test="criterion.betweenValue" >
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue">
+                <when test="criterion.listValue" >
                   and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
                     #{listItem}
                   </foreach>
                 </when>
@@ -79,240 +81,259 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List">
+  <sql id="Base_Column_List" >
     id, user_id, order_id, up_order_id, open_id, ip, phone, fee, disprice, zf_status, 
-    zf_msg, zf_time, transaction_id, cz_status, cz_msg, cz_time, agent, create_time
+    zf_msg, zf_time, zf_callback_time, transaction_id, cz_status, cz_msg, cz_time, cz_callback_time, 
+    agent, create_time
   </sql>
-  <select id="selectByExample" parameterType="com.monkey.wx.domain.WxOrderExample" resultMap="BaseResultMap">
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.monkey.wx.domain.WxOrderExample" >
     select
-    <if test="distinct">
+    <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
     from wx_order
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null">
+    <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from wx_order
     where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from wx_order
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.monkey.wx.domain.WxOrderExample">
+  <delete id="deleteByExample" parameterType="com.monkey.wx.domain.WxOrderExample" >
     delete from wx_order
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.monkey.wx.domain.WxOrder">
+  <insert id="insert" parameterType="com.monkey.wx.domain.WxOrder" >
     insert into wx_order (id, user_id, order_id, 
       up_order_id, open_id, ip, 
       phone, fee, disprice, 
       zf_status, zf_msg, zf_time, 
-      transaction_id, cz_status, cz_msg, 
-      cz_time, agent, create_time
-      )
+      zf_callback_time, transaction_id, cz_status, 
+      cz_msg, cz_time, cz_callback_time, 
+      agent, create_time)
     values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, 
       #{upOrderId,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{fee,jdbcType=DOUBLE}, #{disprice,jdbcType=DOUBLE}, 
       #{zfStatus,jdbcType=INTEGER}, #{zfMsg,jdbcType=VARCHAR}, #{zfTime,jdbcType=VARCHAR}, 
-      #{transactionId,jdbcType=VARCHAR}, #{czStatus,jdbcType=INTEGER}, #{czMsg,jdbcType=VARCHAR}, 
-      #{czTime,jdbcType=VARCHAR}, #{agent,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}
-      )
+      #{zfCallbackTime,jdbcType=VARCHAR}, #{transactionId,jdbcType=VARCHAR}, #{czStatus,jdbcType=INTEGER}, 
+      #{czMsg,jdbcType=VARCHAR}, #{czTime,jdbcType=VARCHAR}, #{czCallbackTime,jdbcType=VARCHAR}, 
+      #{agent,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.monkey.wx.domain.WxOrder">
+  <insert id="insertSelective" parameterType="com.monkey.wx.domain.WxOrder" >
     insert into wx_order
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         id,
       </if>
-      <if test="userId != null">
+      <if test="userId != null" >
         user_id,
       </if>
-      <if test="orderId != null">
+      <if test="orderId != null" >
         order_id,
       </if>
-      <if test="upOrderId != null">
+      <if test="upOrderId != null" >
         up_order_id,
       </if>
-      <if test="openId != null">
+      <if test="openId != null" >
         open_id,
       </if>
-      <if test="ip != null">
+      <if test="ip != null" >
         ip,
       </if>
-      <if test="phone != null">
+      <if test="phone != null" >
         phone,
       </if>
-      <if test="fee != null">
+      <if test="fee != null" >
         fee,
       </if>
-      <if test="disprice != null">
+      <if test="disprice != null" >
         disprice,
       </if>
-      <if test="zfStatus != null">
+      <if test="zfStatus != null" >
         zf_status,
       </if>
-      <if test="zfMsg != null">
+      <if test="zfMsg != null" >
         zf_msg,
       </if>
-      <if test="zfTime != null">
+      <if test="zfTime != null" >
         zf_time,
       </if>
-      <if test="transactionId != null">
+      <if test="zfCallbackTime != null" >
+        zf_callback_time,
+      </if>
+      <if test="transactionId != null" >
         transaction_id,
       </if>
-      <if test="czStatus != null">
+      <if test="czStatus != null" >
         cz_status,
       </if>
-      <if test="czMsg != null">
+      <if test="czMsg != null" >
         cz_msg,
       </if>
-      <if test="czTime != null">
+      <if test="czTime != null" >
         cz_time,
       </if>
-      <if test="agent != null">
+      <if test="czCallbackTime != null" >
+        cz_callback_time,
+      </if>
+      <if test="agent != null" >
         agent,
       </if>
-      <if test="createTime != null">
+      <if test="createTime != null" >
         create_time,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null">
+      <if test="userId != null" >
         #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="orderId != null">
+      <if test="orderId != null" >
         #{orderId,jdbcType=VARCHAR},
       </if>
-      <if test="upOrderId != null">
+      <if test="upOrderId != null" >
         #{upOrderId,jdbcType=VARCHAR},
       </if>
-      <if test="openId != null">
+      <if test="openId != null" >
         #{openId,jdbcType=VARCHAR},
       </if>
-      <if test="ip != null">
+      <if test="ip != null" >
         #{ip,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null">
+      <if test="phone != null" >
         #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="fee != null">
+      <if test="fee != null" >
         #{fee,jdbcType=DOUBLE},
       </if>
-      <if test="disprice != null">
+      <if test="disprice != null" >
         #{disprice,jdbcType=DOUBLE},
       </if>
-      <if test="zfStatus != null">
+      <if test="zfStatus != null" >
         #{zfStatus,jdbcType=INTEGER},
       </if>
-      <if test="zfMsg != null">
+      <if test="zfMsg != null" >
         #{zfMsg,jdbcType=VARCHAR},
       </if>
-      <if test="zfTime != null">
+      <if test="zfTime != null" >
         #{zfTime,jdbcType=VARCHAR},
       </if>
-      <if test="transactionId != null">
+      <if test="zfCallbackTime != null" >
+        #{zfCallbackTime,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionId != null" >
         #{transactionId,jdbcType=VARCHAR},
       </if>
-      <if test="czStatus != null">
+      <if test="czStatus != null" >
         #{czStatus,jdbcType=INTEGER},
       </if>
-      <if test="czMsg != null">
+      <if test="czMsg != null" >
         #{czMsg,jdbcType=VARCHAR},
       </if>
-      <if test="czTime != null">
+      <if test="czTime != null" >
         #{czTime,jdbcType=VARCHAR},
       </if>
-      <if test="agent != null">
+      <if test="czCallbackTime != null" >
+        #{czCallbackTime,jdbcType=VARCHAR},
+      </if>
+      <if test="agent != null" >
         #{agent,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
+      <if test="createTime != null" >
         #{createTime,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.monkey.wx.domain.WxOrderExample" resultType="java.lang.Integer">
+  <select id="countByExample" parameterType="com.monkey.wx.domain.WxOrderExample" resultType="java.lang.Integer" >
     select count(*) from wx_order
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map">
+  <update id="updateByExampleSelective" parameterType="map" >
     update wx_order
-    <set>
-      <if test="record.id != null">
+    <set >
+      <if test="record.id != null" >
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.userId != null">
+      <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
-      <if test="record.orderId != null">
+      <if test="record.orderId != null" >
         order_id = #{record.orderId,jdbcType=VARCHAR},
       </if>
-      <if test="record.upOrderId != null">
+      <if test="record.upOrderId != null" >
         up_order_id = #{record.upOrderId,jdbcType=VARCHAR},
       </if>
-      <if test="record.openId != null">
+      <if test="record.openId != null" >
         open_id = #{record.openId,jdbcType=VARCHAR},
       </if>
-      <if test="record.ip != null">
+      <if test="record.ip != null" >
         ip = #{record.ip,jdbcType=VARCHAR},
       </if>
-      <if test="record.phone != null">
+      <if test="record.phone != null" >
         phone = #{record.phone,jdbcType=VARCHAR},
       </if>
-      <if test="record.fee != null">
+      <if test="record.fee != null" >
         fee = #{record.fee,jdbcType=DOUBLE},
       </if>
-      <if test="record.disprice != null">
+      <if test="record.disprice != null" >
         disprice = #{record.disprice,jdbcType=DOUBLE},
       </if>
-      <if test="record.zfStatus != null">
+      <if test="record.zfStatus != null" >
         zf_status = #{record.zfStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.zfMsg != null">
+      <if test="record.zfMsg != null" >
         zf_msg = #{record.zfMsg,jdbcType=VARCHAR},
       </if>
-      <if test="record.zfTime != null">
+      <if test="record.zfTime != null" >
         zf_time = #{record.zfTime,jdbcType=VARCHAR},
       </if>
-      <if test="record.transactionId != null">
+      <if test="record.zfCallbackTime != null" >
+        zf_callback_time = #{record.zfCallbackTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transactionId != null" >
         transaction_id = #{record.transactionId,jdbcType=VARCHAR},
       </if>
-      <if test="record.czStatus != null">
+      <if test="record.czStatus != null" >
         cz_status = #{record.czStatus,jdbcType=INTEGER},
       </if>
-      <if test="record.czMsg != null">
+      <if test="record.czMsg != null" >
         cz_msg = #{record.czMsg,jdbcType=VARCHAR},
       </if>
-      <if test="record.czTime != null">
+      <if test="record.czTime != null" >
         cz_time = #{record.czTime,jdbcType=VARCHAR},
       </if>
-      <if test="record.agent != null">
+      <if test="record.czCallbackTime != null" >
+        cz_callback_time = #{record.czCallbackTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.agent != null" >
         agent = #{record.agent,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTime != null">
+      <if test="record.createTime != null" >
         create_time = #{record.createTime,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map">
+  <update id="updateByExample" parameterType="map" >
     update wx_order
     set id = #{record.id,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=VARCHAR},
@@ -326,74 +347,82 @@
       zf_status = #{record.zfStatus,jdbcType=INTEGER},
       zf_msg = #{record.zfMsg,jdbcType=VARCHAR},
       zf_time = #{record.zfTime,jdbcType=VARCHAR},
+      zf_callback_time = #{record.zfCallbackTime,jdbcType=VARCHAR},
       transaction_id = #{record.transactionId,jdbcType=VARCHAR},
       cz_status = #{record.czStatus,jdbcType=INTEGER},
       cz_msg = #{record.czMsg,jdbcType=VARCHAR},
       cz_time = #{record.czTime,jdbcType=VARCHAR},
+      cz_callback_time = #{record.czCallbackTime,jdbcType=VARCHAR},
       agent = #{record.agent,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=VARCHAR}
-    <if test="_parameter != null">
+    <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.monkey.wx.domain.WxOrder">
+  <update id="updateByPrimaryKeySelective" parameterType="com.monkey.wx.domain.WxOrder" >
     update wx_order
-    <set>
-      <if test="userId != null">
+    <set >
+      <if test="userId != null" >
         user_id = #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="orderId != null">
+      <if test="orderId != null" >
         order_id = #{orderId,jdbcType=VARCHAR},
       </if>
-      <if test="upOrderId != null">
+      <if test="upOrderId != null" >
         up_order_id = #{upOrderId,jdbcType=VARCHAR},
       </if>
-      <if test="openId != null">
+      <if test="openId != null" >
         open_id = #{openId,jdbcType=VARCHAR},
       </if>
-      <if test="ip != null">
+      <if test="ip != null" >
         ip = #{ip,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null">
+      <if test="phone != null" >
         phone = #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="fee != null">
+      <if test="fee != null" >
         fee = #{fee,jdbcType=DOUBLE},
       </if>
-      <if test="disprice != null">
+      <if test="disprice != null" >
         disprice = #{disprice,jdbcType=DOUBLE},
       </if>
-      <if test="zfStatus != null">
+      <if test="zfStatus != null" >
         zf_status = #{zfStatus,jdbcType=INTEGER},
       </if>
-      <if test="zfMsg != null">
+      <if test="zfMsg != null" >
         zf_msg = #{zfMsg,jdbcType=VARCHAR},
       </if>
-      <if test="zfTime != null">
+      <if test="zfTime != null" >
         zf_time = #{zfTime,jdbcType=VARCHAR},
       </if>
-      <if test="transactionId != null">
+      <if test="zfCallbackTime != null" >
+        zf_callback_time = #{zfCallbackTime,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionId != null" >
         transaction_id = #{transactionId,jdbcType=VARCHAR},
       </if>
-      <if test="czStatus != null">
+      <if test="czStatus != null" >
         cz_status = #{czStatus,jdbcType=INTEGER},
       </if>
-      <if test="czMsg != null">
+      <if test="czMsg != null" >
         cz_msg = #{czMsg,jdbcType=VARCHAR},
       </if>
-      <if test="czTime != null">
+      <if test="czTime != null" >
         cz_time = #{czTime,jdbcType=VARCHAR},
       </if>
-      <if test="agent != null">
+      <if test="czCallbackTime != null" >
+        cz_callback_time = #{czCallbackTime,jdbcType=VARCHAR},
+      </if>
+      <if test="agent != null" >
         agent = #{agent,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null">
+      <if test="createTime != null" >
         create_time = #{createTime,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.monkey.wx.domain.WxOrder">
+  <update id="updateByPrimaryKey" parameterType="com.monkey.wx.domain.WxOrder" >
     update wx_order
     set user_id = #{userId,jdbcType=VARCHAR},
       order_id = #{orderId,jdbcType=VARCHAR},
@@ -406,13 +435,14 @@
       zf_status = #{zfStatus,jdbcType=INTEGER},
       zf_msg = #{zfMsg,jdbcType=VARCHAR},
       zf_time = #{zfTime,jdbcType=VARCHAR},
+      zf_callback_time = #{zfCallbackTime,jdbcType=VARCHAR},
       transaction_id = #{transactionId,jdbcType=VARCHAR},
       cz_status = #{czStatus,jdbcType=INTEGER},
       cz_msg = #{czMsg,jdbcType=VARCHAR},
       cz_time = #{czTime,jdbcType=VARCHAR},
+      cz_callback_time = #{czCallbackTime,jdbcType=VARCHAR},
       agent = #{agent,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
-
 </mapper>

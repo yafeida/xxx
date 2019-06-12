@@ -51,7 +51,7 @@ public class WxUserService {
 	 * @param wxUser
 	 */
 	public void add(WxUser wxUser){
-		wxUser.setId(IDUtils.getUUID());
+		wxUser.setId(IDUtils.getRandomId(9));
 		wxUser.setCreateTime(DateUtil.getDefaultDateFormat());
 		User user = (User) SecurityUtils.getSubject().getPrincipal();
 		wxUser.setCreateUser(user.getUsername());

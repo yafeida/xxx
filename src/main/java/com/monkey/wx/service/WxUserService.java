@@ -2,9 +2,13 @@ package com.monkey.wx.service;
 
 import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.monkey.common.util.DateUtil;
+import com.monkey.common.util.IDUtils;
+import com.monkey.system.domain.User;
 import com.monkey.wx.dao.WxUserMapper;
 import com.monkey.wx.domain.WxUser;
 import com.monkey.wx.domain.WxUserExample;
@@ -40,6 +44,19 @@ public class WxUserService {
 			wxUser.setDelFlag(0);
 			wxUserMapper.updateByExampleSelective(wxUser, wuEx);
 		}
+	}
+	
+	/**
+	 * 新增微信客户
+	 * @param wxUser
+	 */
+	public void add(WxUser wxUser){
+		wxUser.setId(IDUtils.getUUID());
+		wxUser.setCreateTime(DateUtil.getDefaultDateFormat());
+		User user = (User) SecurityUtils.getSubject().getPrincipal();
+		wxUser.setCreateUser(user.getUsername());
+		wxUser.setDelFlag(1);
+		wxUserMapper.insertSelective(wxUser);
 	}
 	
 }

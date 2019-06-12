@@ -48,4 +48,12 @@ public class WxUserController extends BaseController{
 		return ResponseBo.ok("删除成功");
 	}
 	
+	@Log("添加微信客户")
+	@PostMapping("wxUser/add")
+	@ResponseBody
+	public ResponseBo add(WxUser wxUser){
+		this.wxUserService.add(wxUser);
+		return ResponseBo.ok("添加成功");
+	}
+	
 }

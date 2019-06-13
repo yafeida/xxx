@@ -95,6 +95,43 @@ function deleteUsers() {
     });
 }
 
+function updateUsers() {
+    var selected = $("#wxUserTable").bootstrapTable('getSelections');
+    var selected_length = selected.length;
+    if (!selected_length) {
+        $MB.n_warning('请勾选需要修改的用户！');
+        return;
+    }
+    if (selected_length > 1) {
+        $MB.n_warning('一次只能修改一个用户！');
+        return;
+    }
+    var id = selected[0].id;
+    $.post(ctx + "wxUser/getWxUser", {"Id": id}, function (r) {
+        if (r.code === 0) {
+            var $form = $('#wxUser-add');
+            $form.modal();
+            var wxUser = r.msg;
+            $("#wxUser-add-modal-title").html('修改用户');
+            $form.find("input[name='title']").val(wxUser.title);
+            $form.find("input[name='wxName']").val(wxUser.wxName);
+            $form.find("input[name='contactName']").val(wxUser.contactName);
+            $form.find("input[name='contactPhone']").val(wxUser.contactPhone);
+            $form.find("input[name='kfPhone']").val(wxUser.kfPhone);
+            $form.find("input[name='kfWx']").val(wxUser.kfWx);
+            $form.find("input[name='kfWxEwm']").val(wxUser.kfWxEwm);
+            $form.find("input[name='billName']").val(wxUser.billName);
+            $form.find(".form-control").text(wxUser.billKey);
+            $form.find("input[name='channelPerson']").val(wxUser.channelPerson);
+            $("#wxUser-add-button").attr("name", "update");
+        } else {
+            $MB.n_danger(r.msg);
+        }
+    });
+}
+    
+
+
 function exportUserExcel() {
     $.post(ctx + "user/excel", $(".user-table-form").serialize(), function (r) {
         if (r.code === 0) {

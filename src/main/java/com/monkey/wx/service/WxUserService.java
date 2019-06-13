@@ -59,4 +59,23 @@ public class WxUserService {
 		wxUserMapper.insertSelective(wxUser);
 	}
 	
+	/**
+	 * 根据主键ID查询客户信息
+	 * @param id
+	 * @return
+	 */
+	public WxUser findById(String id) {
+		WxUser wxUser =  wxUserMapper.selectByPrimaryKey(id);
+		return wxUser;
+	}
+	
+	/**
+	 * 修改客户信息
+	 * @param wxUser
+	 * @param id
+	 */
+	public void update(WxUser wxUser) {
+		wxUserMapper.updateByPrimaryKeySelective(wxUser);
+	}
+	
 }

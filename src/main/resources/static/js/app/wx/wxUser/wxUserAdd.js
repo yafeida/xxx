@@ -18,6 +18,15 @@ $(function () {
                     } else $MB.n_danger(r.msg);
                 });
             }
+            if (name === "update") {
+            	$.post(ctx + "wxUser/update", $addForm.serialize(), function (r) {
+            		if (r.code === 0) {
+            			closeModal();
+            			$MB.n_success(r.msg);
+            			$MB.refreshTable("wxUserTable");
+            		} else $MB.n_danger(r.msg);
+            	});
+            }
         }
     });
 

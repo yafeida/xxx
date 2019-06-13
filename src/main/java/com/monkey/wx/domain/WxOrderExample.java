@@ -914,6 +914,76 @@ public class WxOrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andZfCallbackTimeIsNull() {
+            addCriterion("zf_callback_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZfCallbackTimeIsNotNull() {
+            addCriterion("zf_callback_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andZfCallbackTimeEqualTo(String value) {
+            addCriterion("zf_callback_time =", value, "zfCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andZfCallbackTimeNotEqualTo(String value) {
+            addCriterion("zf_callback_time <>", value, "zfCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andZfCallbackTimeGreaterThan(String value) {
+            addCriterion("zf_callback_time >", value, "zfCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andZfCallbackTimeGreaterThanOrEqualTo(String value) {
+            addCriterion("zf_callback_time >=", value, "zfCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andZfCallbackTimeLessThan(String value) {
+            addCriterion("zf_callback_time <", value, "zfCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andZfCallbackTimeLessThanOrEqualTo(String value) {
+            addCriterion("zf_callback_time <=", value, "zfCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andZfCallbackTimeLike(String value) {
+            addCriterion("zf_callback_time like", value, "zfCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andZfCallbackTimeNotLike(String value) {
+            addCriterion("zf_callback_time not like", value, "zfCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andZfCallbackTimeIn(List<String> values) {
+            addCriterion("zf_callback_time in", values, "zfCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andZfCallbackTimeNotIn(List<String> values) {
+            addCriterion("zf_callback_time not in", values, "zfCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andZfCallbackTimeBetween(String value1, String value2) {
+            addCriterion("zf_callback_time between", value1, value2, "zfCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andZfCallbackTimeNotBetween(String value1, String value2) {
+            addCriterion("zf_callback_time not between", value1, value2, "zfCallbackTime");
+            return (Criteria) this;
+        }
+
         public Criteria andTransactionIdIsNull() {
             addCriterion("transaction_id is null");
             return (Criteria) this;
@@ -1181,6 +1251,76 @@ public class WxOrderExample {
 
         public Criteria andCzTimeNotBetween(String value1, String value2) {
             addCriterion("cz_time not between", value1, value2, "czTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCzCallbackTimeIsNull() {
+            addCriterion("cz_callback_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCzCallbackTimeIsNotNull() {
+            addCriterion("cz_callback_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCzCallbackTimeEqualTo(String value) {
+            addCriterion("cz_callback_time =", value, "czCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCzCallbackTimeNotEqualTo(String value) {
+            addCriterion("cz_callback_time <>", value, "czCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCzCallbackTimeGreaterThan(String value) {
+            addCriterion("cz_callback_time >", value, "czCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCzCallbackTimeGreaterThanOrEqualTo(String value) {
+            addCriterion("cz_callback_time >=", value, "czCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCzCallbackTimeLessThan(String value) {
+            addCriterion("cz_callback_time <", value, "czCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCzCallbackTimeLessThanOrEqualTo(String value) {
+            addCriterion("cz_callback_time <=", value, "czCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCzCallbackTimeLike(String value) {
+            addCriterion("cz_callback_time like", value, "czCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCzCallbackTimeNotLike(String value) {
+            addCriterion("cz_callback_time not like", value, "czCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCzCallbackTimeIn(List<String> values) {
+            addCriterion("cz_callback_time in", values, "czCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCzCallbackTimeNotIn(List<String> values) {
+            addCriterion("cz_callback_time not in", values, "czCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCzCallbackTimeBetween(String value1, String value2) {
+            addCriterion("cz_callback_time between", value1, value2, "czCallbackTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCzCallbackTimeNotBetween(String value1, String value2) {
+            addCriterion("cz_callback_time not between", value1, value2, "czCallbackTime");
             return (Criteria) this;
         }
 

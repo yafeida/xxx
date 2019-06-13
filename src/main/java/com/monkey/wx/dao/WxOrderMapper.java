@@ -23,7 +23,7 @@ public interface WxOrderMapper {
      * @param example
      * @return
      */
-    List<WxOrder> selectByExampleTwo(WxOrderExample example);
+    List<WxOrder> selectPageList(WxOrderExample example);
 
     WxOrder selectByPrimaryKey(String id);
 

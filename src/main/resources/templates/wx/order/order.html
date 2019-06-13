@@ -1,0 +1,86 @@
+<div class="card">
+<!-- 添加、删除、修改的弹出页面 -->
+    <div class="card-block">
+        <div class="table-responsive">
+            <div id="data-table_wrapper" class="dataTables_wrapper">
+                <div class="dataTables_buttons hidden-sm-down actions">
+                    <span class="actions__item zmdi zmdi-search" onclick="search()" title="搜索" /> <span class="actions__item zmdi zmdi-refresh-alt" onclick="refresh()" title="刷新" />
+                    <div class="dropdown actions__item">
+                        <i data-toggle="dropdown" class="zmdi zmdi-download"> </i>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <a href="javascript:void(0)" class="dropdown-item" data-table-action="excel" onclick="exportOrderExcel()">
+							Excel (.xlsx) </a>
+                            <a href="javascript:void(0)" class="dropdown-item" data-table-action="csv" onclick="exportOrderCsv()"> CSV
+							(.csv) </a>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 搜索条件输入框 -->
+                <div id="data-table_filter" class="dataTables_filter">
+                    <form class="user-table-form">
+                        <div class="row">						
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> 订单号： </span>
+                                    <div class="form-group">
+                                        <input type="text" name="orderNumber" class="form-control"> <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> 手机号： </span>
+                                    <div class="form-group">
+                                         <input type="text" name="phone" class="form-control" > <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> 代理商标识： </span>
+                                    <div class="form-group">
+                                         <input type="text" name="agent" class="form-control" > <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> 开始时间： </span>
+                                    <div class="form-group date">
+                                         <input type="text" name="createTime" class="form-control" > <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> 结束时间： </span>
+                                    <div class="form-group">
+                                         <input type="text" name="endTime" class="form-control" > <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon"> 状态： </span>
+                                    <div class="form-group">
+                                         <select class="form-control" name="status">
+                                            <option value="" selected></option>
+                                            <option value="0">充值中</option>
+                                            <option value="1">提交成功</option>
+                                            <option value="2">提交失败</option>
+                                            <option value="3">充值成功</option>
+                                            <option value="4">充值失败</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- 将搜索出的信息，显示到该table当中 -->
+                <table id="orderTable" data-mobile-responsive="true" class="mb-bootstrap-table"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-src="@{js/app/wx/order.js}"></script>

@@ -22,6 +22,7 @@
     <result column="cz_callback_time" property="czCallbackTime" jdbcType="VARCHAR" />
     <result column="agent" property="agent" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="wx_name" property="wxName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -86,13 +87,29 @@
     zf_msg, zf_time, zf_callback_time, transaction_id, cz_status, cz_msg, cz_time, cz_callback_time, 
     agent, create_time
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.monkey.wx.domain.WxOrderExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.monkey.wx.domain.WxOrderExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+			from wx_order
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+  </select>
+  <select id="selectByExampleTwo" resultMap="BaseResultMap" parameterType="com.monkey.wx.domain.WxOrderExample" >
     select
     <if test="distinct" >
       distinct
     </if>
-    <include refid="Base_Column_List" />
-    from wx_order
+    o.id id, order_id, up_order_id, phone, fee, disprice,zf_status, 
+    zf_msg,zf_time,zf_callback_time,transaction_id,cz_status,cz_msg,cz_time,cz_callback_time, 
+   	agent,o.create_time create_time,u.wx_name wx_name
+   	from wx_order o LEFT JOIN (select id,wx_name from wx_user) u ON o.user_id = u.id
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>

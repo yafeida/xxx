@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.monkey.wx.domain.WxOrder;
+
 @Service
 public interface IService<T> {
 
@@ -22,4 +24,5 @@ public interface IService<T> {
 	int updateNotNull(T entity);
 
 	List<T> selectByExample(Object example);
+
 }

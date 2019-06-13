@@ -29,7 +29,7 @@ public class ChargeController {
 	
 	@RequestMapping("/charge")
 	public String charge() {
-		return "mp/charge";
+		return "wx/charge";
 	}
 	//查询手机号信息
 	@RequestMapping("/getPhoneInfo")

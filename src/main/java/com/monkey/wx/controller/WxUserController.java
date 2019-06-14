@@ -7,7 +7,6 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -73,9 +72,18 @@ public class WxUserController extends BaseController{
 	@PostMapping("wxUser/update")
 	@ResponseBody
 	public ResponseBo update(WxUser wxUser){
-		Session session = getSubject().getSession();
-		wxUser.setId(session.getAttribute("wxUserId")+"");
-		return wxUserService.update(wxUser);
+		Session session = getSession();
+		wxUser.setId(session.getAttribute("wxUserId").toString());
+		try {
+			boolean bool = wxUserService.update(wxUser);
+			if(bool) {
+				return ResponseBo.ok("修改成功");
+			}else{
+				return ResponseBo.ok("修改失败");
+			}
+		} catch (Exception e) {
+			return ResponseBo.ok("修改失败");
+		}
 	}
 	
 	@Log("配置微信客户")

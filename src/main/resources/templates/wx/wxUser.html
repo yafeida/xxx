@@ -18,8 +18,9 @@
                         <i data-toggle="dropdown" class="zmdi zmdi-more-vert"></i>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="javascript:void(0)" class="dropdown-item" data-toggle="modal" data-target="#wxUser-add" shiro:hasPermission="user:add">新增客户</a>
-                            <a href="javascript:void(0)" class="dropdown-item" onclick="updateUser()" shiro:hasPermission="user:update">修改客户</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="updateUsers()" data-target="#wxUser-add" shiro:hasPermission="user:update">修改客户</a>
                             <a href="javascript:void(0)" class="dropdown-item" onclick="deleteUsers()" shiro:hasPermission="user:delete">删除客户</a>
+                            <a href="javascript:void(0)" class="dropdown-item" onclick="configUsers()" shiro:hasPermission="user:config">删除客户</a>
                         </div>
                     </div>
                 </div>

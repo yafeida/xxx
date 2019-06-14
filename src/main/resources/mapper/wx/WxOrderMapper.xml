@@ -101,7 +101,7 @@
 			order by ${orderByClause}
 		</if>
   </select>
-  <select id="selectByExampleTwo" resultMap="BaseResultMap" parameterType="com.monkey.wx.domain.WxOrderExample" >
+  <select id="selectPageList" resultMap="BaseResultMap" parameterType="com.monkey.wx.domain.WxOrderExample" >
     select
     <if test="distinct" >
       distinct

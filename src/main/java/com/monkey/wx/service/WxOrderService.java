@@ -46,7 +46,7 @@ public class WxOrderService{
 		if(createTime!= null && !createTime.equals("") && endTime!= null && !endTime.equals("")) {
 			c.andCreateTimeBetween(createTime,endTime);
 		}
-		List<WxOrder> list = wxOrderMapper.selectByExampleTwo(wxOrderExample);
+		List<WxOrder> list = wxOrderMapper.selectPageList(wxOrderExample);
 		return list;
 	}
 	

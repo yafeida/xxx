@@ -3,9 +3,11 @@ package com.monkey.wx.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.session.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,7 @@ import com.monkey.common.annotation.Log;
 import com.monkey.common.controller.BaseController;
 import com.monkey.common.domain.QueryRequest;
 import com.monkey.common.domain.ResponseBo;
+import com.monkey.wx.domain.WxConfig;
 import com.monkey.wx.domain.WxUser;
 import com.monkey.wx.service.WxUserService;
 
@@ -70,11 +73,22 @@ public class WxUserController extends BaseController{
 	@PostMapping("wxUser/update")
 	@ResponseBody
 	public ResponseBo update(WxUser wxUser){
-		Session session = getSession();
+		Session session = getSubject().getSession();
 		wxUser.setId(session.getAttribute("wxUserId")+"");
-		this.wxUserService.update(wxUser);
-		return ResponseBo.ok("修改成功");
+		return wxUserService.update(wxUser);
 	}
 	
+	@Log("配置微信客户")
+	@RequiresPermissions("wxUser:config")
+	@PostMapping("wxUser/config")
+	@ResponseBody
+	public ResponseBo config(WxConfig wxConfig){
+		try {
+			String	str = wxUserService.addConfig(wxConfig);
+			return ResponseBo.ok(str);
+		} catch (Exception e) {
+			return ResponseBo.ok("配置失败");
+		}
+	}
 
 }

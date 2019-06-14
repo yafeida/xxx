@@ -1,0 +1,139 @@
+<div class="modal fade" id="wxConfig-add" data-keyboard="false" data-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title pull-left" id="wxConfig-add-modal-title">配置客户信息</h3>
+            </div>
+            <div class="modal-body">
+                <form id="wxConfig-add-form">
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 配置用户ID：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="Id" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 微信号appId：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="appId" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 公众号密钥：
+					            </span>
+					            <div class="form-group">
+					            	<textarea class="form-control" name="appSecret" aria-label="With textarea"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	公众号toKen：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="token" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 公众号aesKey：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="aeskey" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	商户号：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="mchId" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	商户平台密钥：
+					            </span>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="mchKey" aria-label="With textarea"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 支付证书存放地址：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="certPath" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	 支付类型：
+					            </span>
+                                <div class="form-group">
+                                	<input type="text" name="zfType" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+					               	支付相关信息：
+					            </span>
+                                <div class="form-group">
+                                    <input type="text" name="zfInfo" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-save" id="wxConfig-add-button" name="save">保存</button>
+                <button type="button" class="btn btn-secondary btn-close">关闭</button>
+                <button class="btn-hide"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-src="@{js/app/wx/wxUser/wxConfigAdd.js}"></script>

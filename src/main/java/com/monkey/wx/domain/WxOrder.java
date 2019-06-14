@@ -49,7 +49,11 @@ public class WxOrder {
 	@Column(name = "ZFMSG")
 	@ExportConfig(value = "支付状态")
     private String zfMsg;
-
+	
+	@Column(name = "ZFORDERID")
+	@ExportConfig(value = "第三方支付订单号")
+	private String zfOrderId;
+	
 	@Column(name = "ZFTIME")
 	@ExportConfig(value = "支付时间")
     private String zfTime;
@@ -186,7 +190,15 @@ public class WxOrder {
         this.zfMsg = zfMsg == null ? null : zfMsg.trim();
     }
 
-    public String getZfTime() {
+    public String getZfOrderId() {
+		return zfOrderId;
+	}
+
+	public void setZfOrderId(String zfOrderId) {
+		this.zfOrderId = zfOrderId;
+	}
+
+	public String getZfTime() {
         return zfTime;
     }
 

@@ -26,7 +26,7 @@ public class RSA {
     private static int          KEYSIZE        = 2048;
     private static final String encoding       = "UTF-8";
     private static final String RSA_ALGORITHM  = "RSA";
-
+    public static final String huiLianRsaPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs53yaPCdlEQ7vaXwKzM8vujx8TS8vvRl98dXvk7Nbb/w0QciU8IeFwTeuhtomb4W604kbZQMlDFL8csWUr1mhndRmqmA7QvqJwX1CH0+vA+EbuBbp7cIRGjUYp4nepZQ6Wkd2sJmw9LERzcnaODN2QzOyebDzF7+0uWdmoeTu4GP0VKqCVnmugvXR80rkQ/QHDGqFRnwpKLkgCST3gVOC1pGEt7IcYXj2FYbQGLgep6EwnYF2LcIR+wF4Z/hUBHdgpcdpok0+hBQnznEIV5VHokz2le0pjrrb6fhfrsLkNOyR+PbeaBJ9wQkUIrekHOmK+9xLJHjzf7kZqJydtnZgwIDAQAB";
 
     /**
      * 生成密钥对

@@ -1,6 +1,15 @@
 package com.monkey.common.util;
 
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -144,5 +153,38 @@ public class HttpUtils {
            return true;
         }
     }
+    
+    public static String get(String url) {
+		CloseableHttpClient httpClient = null;
+		try {
+			httpClient = HttpClients.createDefault();
+			HttpGet httpget = new HttpGet(url);
+			RequestConfig requestConfig = RequestConfig.custom().setSocketTimeout(30000).setConnectTimeout(30000).build();// 设置请求和传输超时时间
+			httpget.setConfig(requestConfig);
+			CloseableHttpResponse response = httpClient.execute(httpget);
+			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+				// 获取状态行
+				HttpEntity entity = response.getEntity();
+				if (entity != null) {
+					String out = EntityUtils.toString(entity, "UTF-8");
+					return out;
+				}
+			}
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+			return null;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			try {
+				if(null != httpClient){
+					httpClient.close();
+				}
+			} catch (IOException e) {
+			}
+		}
+		return null;
+	} 
 
 }

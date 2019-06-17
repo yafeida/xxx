@@ -10,7 +10,9 @@ import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSONObject;
 import com.monkey.wx.domain.WxConfig;
+import com.monkey.wx.domain.WxOrder;
 import com.monkey.wx.pay.HuiLianUtils.HttpsMain;
+import com.monkey.wx.pay.HuiLianUtils.RSA;
 import com.monkey.wx.pay.HuiLianUtils.XmlSignUtil;
 import com.monkey.wx.pay.HuiLianUtils.XmlUtil;
 import com.mysql.jdbc.StringUtils;
@@ -82,4 +84,60 @@ public class HuiLianPay {
 		}
 	}
 
+	/**
+	 * 汇联支付退款方法
+	 * @param wxOrder
+	 * @return
+	 */
+	public static boolean refound(WxOrder wxOrder,WxConfig wxConfig){
+		log.info("汇联退款方法，订单号为" + wxOrder.getOrderId()+"，手机号为" + wxOrder.getPhone());
+		String function = "ant.mybank.bkmerchanttrade.refund";
+		XmlUtil xmlUtil = new XmlUtil();
+		
+		String zfInfo = wxConfig.getZfInfo();
+		JSONObject zfInfoJson = JSONObject.parseObject(zfInfo);
+		Map<String, String> form = new HashMap<>();
+		form.put("OutTradeNo", wxOrder.getOrderId());// 原支付交易外部交易号、
+		form.put("HlMerchantId", zfInfoJson.getString("HlMerchantId"));// 商户号
+		form.put("IsvOrgId", zfInfoJson.getString("IsvOrgId"));// 合作方机构号
+		String outRefundNo = UUID.randomUUID().toString().replaceAll("-", "");
+		form.put("OutRefundNo", outRefundNo);// 退款外部交易号
+		int fee = (int) (wxOrder.getDisprice() * 100);
+		form.put("RefundAmount", fee + "");// 退款金额
+		form.put("DeviceCreateIp", "127.0.0.1");// 创建订单终端的IP
+
+		form.put("Function", function);
+		form.put("ReqTime", new Timestamp(System.currentTimeMillis()).toString());
+		// reqMsgId每次报文必须都不一样
+		form.put("ReqMsgId", UUID.randomUUID().toString());
+		try {
+			String param = xmlUtil.format(form, function);
+			param = XmlSignUtil.sign(param, zfInfoJson.getString("myRsaPrivateKey"));
+			// 发送请求
+			// https
+			log.info("汇联退款请求报文{}" + param);
+
+			String response = HttpsMain.httpsReq(HttpsMain.payUrl, param);
+
+			log.info("response{}" + response);
+			if (!XmlSignUtil.verify(response, RSA.huiLianRsaPublicKey)) {
+				return false;
+			}
+			// 解析报文
+			Map<String, Object> resMap = xmlUtil.parse(response, function);
+			log.info("汇联退款返回报文:" + resMap);
+			// 结果消息
+			@SuppressWarnings("unchecked")
+			Map<String, Object> respInfo = (Map<String, Object>) resMap.get("RespInfo");
+			if (respInfo.get("ResultCode").equals("0000")) {
+				log.info("汇联退款提交成功");
+				return true;
+			}
+		} catch (Exception e) {
+			log.error("汇联退款出现异常",e);
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 }

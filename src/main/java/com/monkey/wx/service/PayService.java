@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -41,6 +42,8 @@ public class PayService {
 	WxConfigMapper wxConfigMapper;
 	@Autowired
 	WxOrderMapper wxOrderMapper;
+	@Autowired
+	BosspayBillService billService;
 	
 	/**
 	 * 支付方法
@@ -115,6 +118,25 @@ public class PayService {
 				XmlUtil xmlUtil = new XmlUtil();
 				Map<String, Object> params = xmlUtil.parseReceive(xml.replaceAll("\r\n", ""), "ant.mybank.bkmerchanttrade.prePayNotice");
 				if(HuiLianCallbackDeal(params)){//回调处理成功
+					String orderId = (String) params.get("OutTradeNo");
+					WxOrderExample woEx = new WxOrderExample();
+					woEx.createCriteria().andOrderIdEqualTo(orderId);
+					List<WxOrder> woList = wxOrderMapper.selectByExample(woEx);
+					if(woList.isEmpty()){
+						log.error("汇联支付回调未查询到订单号为"+orderId+"的订单");
+						return "FAIL";
+					}
+					WxOrder wxOrder = woList.get(0);
+					Map<String,Object> map = this.billService.deal(wxOrder);
+					boolean flag = (boolean) map.get("flag");
+					String czMsg = (String) map.get("msg");
+					wxOrder.setCzMsg(czMsg);
+					wxOrder.setCzTime(DateUtil.getDefaultDateFormat());
+					if(flag){//判断是否提交成功
+						wxOrder.setCzStatus(1);
+					}else{
+						wxOrder.setCzStatus(2);
+					}
 					
 				}else{
 					
@@ -136,7 +158,12 @@ public class PayService {
 		if(StringUtil.isNotEmpty(OutTradeNo)){
 			WxOrderExample wxOrderEx = new WxOrderExample();
 			wxOrderEx.createCriteria().andOrderIdEqualTo(OutTradeNo);
-			WxOrder wxOrder = wxOrderMapper.selectByExample(wxOrderEx).get(0);
+			List<WxOrder> woList = wxOrderMapper.selectByExample(wxOrderEx);
+			if(woList.isEmpty()){
+				log.error("汇联支付回调处理方法未查询到订单号为"+OutTradeNo+"的订单");
+				return false;
+			}
+			WxOrder wxOrder = woList.get(0);
 			if(wxOrder != null){
 				if(wxOrder.getZfStatus() == 1){
 					String totalAmount = (String) map.get("TotalAmount");

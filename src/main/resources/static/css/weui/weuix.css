@@ -254,9 +254,10 @@ margin20{margin:20px;}
 }
 .weui-table td, .weui-table th,table td, table th  {
     border:1px solid #e0e0e0;
-    text-align: left;
+/*     text-align: left; */
     line-height: 25px;
-      padding:8px;
+    padding:6px;
+    font-size: 13px;
 }
 .weui-table tr:hover, able tr:hover{background: #F7F7F7;}
 .weui-table-2n tr:nth-child(2n) {

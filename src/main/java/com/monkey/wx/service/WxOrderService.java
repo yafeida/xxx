@@ -1,12 +1,17 @@
 package com.monkey.wx.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.monkey.common.service.IService;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.PageHelper;
 import com.monkey.wx.dao.WxOrderMapper;
 import com.monkey.wx.domain.WxOrder;
 import com.monkey.wx.domain.WxOrderExample;
@@ -50,6 +55,58 @@ public class WxOrderService{
 		return list;
 	}
 	
+	/**
+	 * 根据openid查询指定时间段内的订单
+	 * @param req
+	 * @return
+	 */
+	public JSONObject selectMyOrderList(HttpServletRequest req){
+		int pageNumber = Integer.parseInt(req.getParameter("pageNumber"));
+		int pageSize = Integer.parseInt(req.getParameter("pageSize"));
+		String startDate = req.getParameter("startDate")+" 00:00:00";
+		String endDate = req.getParameter("endDate")+" 23:59:59";
+		String openId = req.getParameter("openId");
+		WxOrderExample wxOrderExample = new WxOrderExample();
+		wxOrderExample.setOrderByClause("create_time DESC");
+		Criteria c = wxOrderExample.createCriteria();
+		if(startDate!= null && !startDate.equals("") && endDate!= null && !endDate.equals("") ) {
+			c.andCreateTimeBetween(startDate, endDate);
+		}
+		if(openId!= null && !openId.equals("") ) {
+			c.andOpenIdEqualTo(openId);
+		}
+		int count = wxOrderMapper.countByExample(wxOrderExample);
+		int totalPages = count / pageSize;
+		if (count % pageSize != 0){
+			totalPages ++;
+		}
+		PageHelper.startPage(pageNumber,pageSize);
+		List<WxOrder> list = wxOrderMapper.selectByExample(wxOrderExample);
+		JSONArray json = new JSONArray();
+		for (int i = 0; i < list.size(); i++) {
+			Map<String, Object> map = new HashMap<>();
+			map.put("phone",list.get(i).getPhone());
+			map.put("fee",list.get(i).getFee());
+			map.put("discount",list.get(i).getDisprice());
+			if(list.get(i).getCzStatus() == 3) {
+				map.put("status","成功");
+			}else if(list.get(i).getCzStatus() == 4){
+				map.put("status","已退款");
+			}else {
+				map.put("status","处理中");
+			}
+			map.put("createTime",list.get(i).getCreateTime());
+			json.add(map);
+		}
+		JSONObject jsonObj = new JSONObject();
+		jsonObj.put("myOrder", json);
+		jsonObj.put("pageNumber",pageNumber );
+		jsonObj.put("pageSize",pageSize );
+		jsonObj.put("totalPage",totalPages);
+		jsonObj.put("totalRow",count);
+		return jsonObj;
+	}
 	
+
 	
 }

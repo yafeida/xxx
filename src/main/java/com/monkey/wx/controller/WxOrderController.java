@@ -1,5 +1,6 @@
 package com.monkey.wx.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.monkey.common.annotation.Log;
@@ -76,6 +79,17 @@ public class WxOrderController extends BaseController {
             log.error("导出用户信息Csv失败", e);
             return ResponseBo.error("导出Csv失败，请联系网站管理员！");
         }
+    }
+    
+    /**
+     * 查询客户订单
+     * @param req
+     * @return
+     */
+    @RequestMapping("order/myOrderList")
+    @ResponseBody
+    public JSONObject myOrderList(HttpServletRequest req) {
+    	return orderService.selectMyOrderList(req);
     }
 
 }

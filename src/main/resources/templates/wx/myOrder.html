@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>我的订单</title>
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,user-scalable=0">
+<link rel="stylesheet" data-th-href="@{css/weui/weui.css}">
+<link rel="stylesheet" data-th-href="@{css/weui/weuix.css}">
+<script data-th-src="@{js/jquery.min.js}"></script>
+<script data-th-src="@{js/app/wx/myOrder.js}"></script>
+</head>
+<body>
+	<div class="weui_cells" style="margin-top: 0px;">
+		<div class="weui_cell_myOrder">
+			<div class="nav-left">
+				<a href="javascript:history.go(-1)" style="font-size: 14px">&lt;
+					返回 </a>
+			</div>
+			<div class="weui_cells_title">
+				<p>
+					<b>我的订单</b>
+				</p>
+			</div>
+			<div class="nav-right">
+				<a
+					href="agentLogin.jsp?appId=<%=appId%>&openId=<%=openId%>&agent=<%=agent%>"
+					style="font-size: 14px">我是代理商</a>
+			</div>
+		</div>
+	</div>
+	<div class="weui_cells">
+		<div class="weui_cell_myOrder">
+			<div>
+				<label class="weui-label">开始时间 :</label>
+			</div>
+			<div class="weui-cell__bd">
+				<input class="weui-input-date" type="date" id="startDate" />
+			</div>
+		</div> 
+		<div class="weui_cell_myOrder">
+			<div>
+				<label class="weui-label">结束时间 :</label>
+			</div>
+			<div class="weui-cell__bd">
+				<input class="weui-input-date" type="date" id="endDate" />
+			</div>
+		</div>
+		<div class="weui_btn_area">
+			<a href="javascript:;" class="weui-btn weui-btn_primary"
+				onclick="addListener();">查询</a>
+		</div>
+	</div>
+	<!-- style="padding-top: 3px; padding-bottom: 5px;" -->
+	<div class="weui_cells" id="order-table"></div>
+	<div class="weui_cells" id="order-page" style="padding-top: 5px;">
+</body>
+</html>

@@ -6,7 +6,7 @@ import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.apache.shiro.session.Session;
+
 import com.monkey.common.domain.ResponseBo;
 import com.monkey.common.util.DateUtil;
 import com.monkey.common.util.IDUtils;
@@ -14,7 +14,6 @@ import com.monkey.system.domain.User;
 import com.monkey.wx.dao.WxConfigMapper;
 import com.monkey.wx.dao.WxUserMapper;
 import com.monkey.wx.domain.WxConfig;
-import com.monkey.wx.domain.WxConfigExample;
 import com.monkey.wx.domain.WxUser;
 import com.monkey.wx.domain.WxUserExample;
 import com.monkey.wx.domain.WxUserExample.Criteria;
@@ -83,12 +82,12 @@ public class WxUserService {
 	 * @param wxUser
 	 * @param id
 	 */
-	public ResponseBo update(WxUser wxUser) {
+	public boolean update(WxUser wxUser) {
 		int i= wxUserMapper.updateByPrimaryKeySelective(wxUser);
 		if(i>0) {
-			return ResponseBo.ok("修改成功");
+			return true;
 		}
-		return ResponseBo.ok("修改失败");
+		return false;
 	}
 	
 	/**

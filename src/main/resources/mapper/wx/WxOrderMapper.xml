@@ -85,7 +85,7 @@
   </sql>
   <sql id="Base_Column_List" >
     id, user_id, order_id, up_order_id, open_id, ip, phone, fee, disprice, zf_status, 
-    zf_msg, zf_order_id, zf_time, zf_callback_time, transaction_id, cz_status, cz_msg, cz_time, cz_callback_time, 
+    zf_msg, zf_order_id, zf_time, zf_callback_time, transaction_id,cz_status, cz_msg, cz_time, cz_callback_time, 
     agent, create_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.monkey.wx.domain.WxOrderExample">

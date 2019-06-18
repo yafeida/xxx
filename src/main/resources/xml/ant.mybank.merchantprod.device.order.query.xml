@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<body>
+    <xmlTag tagName="SerialNumber"></xmlTag>
+    <xmlTag tagName="IsvOrgId"></xmlTag>
+    <xmlTag tagName="OutTradeNo"></xmlTag>
+    <xmlTag tagName="MerchantId"></xmlTag>
+    <xmlTag tagName="HlMerchantId"></xmlTag>
+    <xmlTag tagName="RespInfo">
+        <xmlTag tagName="ResultStatus"></xmlTag>
+        <xmlTag tagName="ResultCode"></xmlTag>
+        <xmlTag tagName="ResultMsg"></xmlTag>
+    </xmlTag>
+    <xmlTag tagName="OrderNo"></xmlTag>
+    <xmlTag tagName="TradeStatus"></xmlTag>
+    <xmlTag tagName="ChannelType"></xmlTag>
+    <xmlTag tagName="TotalAmount"></xmlTag>
+    <xmlTag tagName="Currency"></xmlTag>
+    <xmlTag tagName="Body"></xmlTag>
+    <xmlTag tagName="GoodsTag"></xmlTag>
+    <xmlTag tagName="GoodsDetail"></xmlTag>
+    <xmlTag tagName="OpenId"></xmlTag>
+    <xmlTag tagName="OperatorId"></xmlTag>
+    <xmlTag tagName="StoreId"></xmlTag>
+    <xmlTag tagName="DeviceId"></xmlTag>
+    <xmlTag tagName="SettleType"></xmlTag>
+    <xmlTag tagName="Attach"></xmlTag>
+    <xmlTag tagName="GmtPayment"></xmlTag>
+    <xmlTag tagName="BankType"></xmlTag>
+    <xmlTag tagName="IsSubscribe"></xmlTag>
+    <xmlTag tagName="PayChannelOrderNo"></xmlTag>
+    <xmlTag tagName="MerchantOrderNo"></xmlTag>
+    <xmlTag tagName="SubAppId"></xmlTag>
+    <xmlTag tagName="CouponFee  "></xmlTag>
+    <xmlTag tagName="BuyerLogonId"></xmlTag>
+    <xmlTag tagName="BuyerUserId"></xmlTag>
+    <xmlTag tagName="Credit"></xmlTag>
+    <xmlTag tagName="ReceiptAmount"></xmlTag>
+    <xmlTag tagName="BuyerPayAmount"></xmlTag>
+    <xmlTag tagName="InvoiceAmount"></xmlTag>
+</body>

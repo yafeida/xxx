@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!--5.2.4	微信子商户支付配置接口	<ant.mybank.merchantprod.merchant.addMerchantConfig> -->
+<body>
+    <xmlTag tagName="IsvOrgId"></xmlTag>
+    <xmlTag tagName="HlMerchantId"></xmlTag>
+    <xmlTag tagName="RespInfo">
+        <xmlTag tagName="ResultStatus"></xmlTag>
+        <xmlTag tagName="ResultCode"></xmlTag>
+        <xmlTag tagName="ResultMsg"></xmlTag>
+    </xmlTag>
+    <xmlTag tagName="Body"></xmlTag>
+</body>

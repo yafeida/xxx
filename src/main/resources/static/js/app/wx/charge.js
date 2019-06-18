@@ -1,4 +1,4 @@
-2var amount = null;	//充值金额
+var amount = null;	//充值金额
 var discount = null;	//折扣后金额
 $(function() {
 	/*禁用提交充值按钮*/

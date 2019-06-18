@@ -321,6 +321,10 @@
                     </execution>
                 </executions>
                 <configuration>
+                	<compilerArguments>
+			            <verbose />
+			            <bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>
+			        </compilerArguments> 
                     <compilerArgs>
                         <!-- 开启此参数 可通过反射获取方法的原始参数名 非 以 args 开头 java1.8  有效,add  by jyao-->
                         <arg>-parameters</arg>

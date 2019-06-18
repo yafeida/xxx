@@ -108,9 +108,9 @@ public class SignatureUtils {
         }
 
         elementNode.appendChild(xmlSignature.getElement());
-        if (signatureAppendMode == XmlSignatureAppendMode.AS_CHILDREN) {
+        if (signatureAppendMode == 1) {
             elementNode.appendChild(xmlSignature.getElement());
-        } else if (signatureAppendMode == XmlSignatureAppendMode.AS_BROTHER) {
+        } else if (signatureAppendMode == 2) {
             elementNode.getParentNode().appendChild(xmlSignature.getElement());
         } else {
             throw new IllegalArgumentException("Illegal Append Mode");

@@ -8,7 +8,7 @@ spring:
       # 数据库访问配置, 使用druid数据源 
       db-type: com.alibaba.druid.pool.DruidDataSource
       driverClassName: com.mysql.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/wx?useUnicode=true&characterEncoding=UTF-8
+      url: jdbc:mysql://192.168.1.90:3306/weixin?useUnicode=true&characterEncoding=UTF-8
       username: root
       password: root
       # 连接池配置
@@ -146,6 +146,9 @@ pagehelper:
 
 logging:
   level:
+    org.springframework.web: INFO
+    com.monkey.wxjava: DEBUG
+    me.chanjar.weixin: DEBUG
     com:
       monkey:
         system:
@@ -162,7 +165,7 @@ monkey:
     # rememberMe cookie有效时长，默认86400秒，即一天
     cookieTimeout: 86400
     # 免认证的路径配置，如静态资源，druid监控页面，注册页面，验证码请求等
-    anonUrl: /css/**,/js/**,/fonts/**,/img/**,/druid/**,/user/regist,/gifCode,/,/actuator/**,/test/**,/charge,/getPhoneInfo,/submitRecharge,/chargeBillCallback
+    anonUrl: /css/**,/js/**,/fonts/**,/img/**,/druid/**,/user/regist,/gifCode,/,/actuator/**,/test/**,/wx/**,/charge,/myOrder,/order/myOrderList,/getPhoneInfo,/submitRecharge,/chargeBillCallback
     # 登录 url
     loginUrl: /login
     # 登录成功后跳转的 url
@@ -184,4 +187,11 @@ monkey:
     # 验证码字符个数，默认4个字符
     length: 4
 
+wx:
+  mp:
+    configs:
+      - appId: wx5ae4b9e95f26884f
+        secret: 57e427685d119f5aa6c1414930041c46
+        token: test
+        aesKey: 6XfYIu67UGmWRblvZ6hac4tvTI8PjDs2N9xYH7QhRWu
 

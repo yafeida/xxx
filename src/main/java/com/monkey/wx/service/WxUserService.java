@@ -101,7 +101,7 @@ public class WxUserService {
 			return "配置失败";
 		}
 		WxUser user =  wxUserMapper.selectByPrimaryKey(userID);
-		if(user.getConfigId().equals("") || user.getConfigId() == null ) {//判断ConfigID是否为空，如已配置信息，则不能在进行配置
+		if(user.getConfigId() == null || user.getConfigId().equals("")) {//判断ConfigID是否为空，如已配置信息，则不能在进行配置
 			String configId = IDUtils.getUUID();	 //生成wx_config的id
 			wxConfig.setId(configId);
 			int i = wxConfigMapper.insert(wxConfig);

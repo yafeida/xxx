@@ -6,7 +6,7 @@ $(function () {
 		var validator = $addConfigForm.validate();
 		var flag = validator.form();
 		if (flag) {
-			if (name === "save") {
+			if (name === "config") {
 				$.post(ctx + "wxUser/config", $addConfigForm.serialize(), function (r) {
 					if (r.code === 0) {
 						closeModal();
@@ -23,6 +23,13 @@ $(function () {
 	});
 
 });
+
+function closeModal() {
+    $("#wxConfig-add-button").attr("name", "config");
+    validator.resetForm();
+    $("#wxConfig-add-modal-title").html('配置客户');
+    $MB.closeAndRestModal("wxConfig-add");
+}
 
 function configUsers(){
 	var selected = $("#wxUserTable").bootstrapTable('getSelections');

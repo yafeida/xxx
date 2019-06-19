@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<body>
+    <xmlTag tagName="SerialNumber"></xmlTag>
+    <!--<xmlTag tagName="IsvOrgId"></xmlTag>-->
+    <!--<xmlTag tagName="Body"></xmlTag>-->
+    <xmlTag tagName="MerchantName"></xmlTag>
+    <xmlTag tagName="Logo"></xmlTag>
+    <xmlTag tagName="Title"></xmlTag>
+    <xmlTag tagName="ServicePhone"></xmlTag>
+    <xmlTag tagName="Technical"></xmlTag>
+    <xmlTag tagName="Version"></xmlTag>
+    <xmlTag tagName="Brand"></xmlTag>
+    <xmlTag tagName="Model"></xmlTag>
+    <xmlTag tagName="DeviceSn"></xmlTag>
+    <xmlTag tagName="RespInfo">
+        <xmlTag tagName="ResultStatus"></xmlTag>
+        <xmlTag tagName="ResultCode"></xmlTag>
+        <xmlTag tagName="ResultMsg"></xmlTag>
+    </xmlTag>
+</body>

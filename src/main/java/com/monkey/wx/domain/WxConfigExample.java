@@ -803,6 +803,146 @@ public class WxConfigExample {
             addCriterion("zf_info not between", value1, value2, "zfInfo");
             return (Criteria) this;
         }
+
+        public Criteria andTemplateBillSuccessIsNull() {
+            addCriterion("template_bill_success is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillSuccessIsNotNull() {
+            addCriterion("template_bill_success is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillSuccessEqualTo(String value) {
+            addCriterion("template_bill_success =", value, "templateBillSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillSuccessNotEqualTo(String value) {
+            addCriterion("template_bill_success <>", value, "templateBillSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillSuccessGreaterThan(String value) {
+            addCriterion("template_bill_success >", value, "templateBillSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillSuccessGreaterThanOrEqualTo(String value) {
+            addCriterion("template_bill_success >=", value, "templateBillSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillSuccessLessThan(String value) {
+            addCriterion("template_bill_success <", value, "templateBillSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillSuccessLessThanOrEqualTo(String value) {
+            addCriterion("template_bill_success <=", value, "templateBillSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillSuccessLike(String value) {
+            addCriterion("template_bill_success like", value, "templateBillSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillSuccessNotLike(String value) {
+            addCriterion("template_bill_success not like", value, "templateBillSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillSuccessIn(List<String> values) {
+            addCriterion("template_bill_success in", values, "templateBillSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillSuccessNotIn(List<String> values) {
+            addCriterion("template_bill_success not in", values, "templateBillSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillSuccessBetween(String value1, String value2) {
+            addCriterion("template_bill_success between", value1, value2, "templateBillSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillSuccessNotBetween(String value1, String value2) {
+            addCriterion("template_bill_success not between", value1, value2, "templateBillSuccess");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillFailIsNull() {
+            addCriterion("template_bill_fail is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillFailIsNotNull() {
+            addCriterion("template_bill_fail is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillFailEqualTo(String value) {
+            addCriterion("template_bill_fail =", value, "templateBillFail");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillFailNotEqualTo(String value) {
+            addCriterion("template_bill_fail <>", value, "templateBillFail");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillFailGreaterThan(String value) {
+            addCriterion("template_bill_fail >", value, "templateBillFail");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillFailGreaterThanOrEqualTo(String value) {
+            addCriterion("template_bill_fail >=", value, "templateBillFail");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillFailLessThan(String value) {
+            addCriterion("template_bill_fail <", value, "templateBillFail");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillFailLessThanOrEqualTo(String value) {
+            addCriterion("template_bill_fail <=", value, "templateBillFail");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillFailLike(String value) {
+            addCriterion("template_bill_fail like", value, "templateBillFail");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillFailNotLike(String value) {
+            addCriterion("template_bill_fail not like", value, "templateBillFail");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillFailIn(List<String> values) {
+            addCriterion("template_bill_fail in", values, "templateBillFail");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillFailNotIn(List<String> values) {
+            addCriterion("template_bill_fail not in", values, "templateBillFail");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillFailBetween(String value1, String value2) {
+            addCriterion("template_bill_fail between", value1, value2, "templateBillFail");
+            return (Criteria) this;
+        }
+
+        public Criteria andTemplateBillFailNotBetween(String value1, String value2) {
+            addCriterion("template_bill_fail not between", value1, value2, "templateBillFail");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

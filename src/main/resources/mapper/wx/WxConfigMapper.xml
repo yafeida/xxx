@@ -1,37 +1,39 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.monkey.wx.dao.WxConfigMapper" >
-  <resultMap id="BaseResultMap" type="com.monkey.wx.domain.WxConfig" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="app_id" property="appId" jdbcType="VARCHAR" />
-    <result column="app_secret" property="appSecret" jdbcType="VARCHAR" />
-    <result column="token" property="token" jdbcType="VARCHAR" />
-    <result column="aesKey" property="aeskey" jdbcType="VARCHAR" />
-    <result column="mch_id" property="mchId" jdbcType="VARCHAR" />
-    <result column="mch_key" property="mchKey" jdbcType="VARCHAR" />
-    <result column="cert_path" property="certPath" jdbcType="VARCHAR" />
-    <result column="zf_type" property="zfType" jdbcType="VARCHAR" />
-    <result column="zf_info" property="zfInfo" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.monkey.wx.dao.WxConfigMapper">
+  <resultMap id="BaseResultMap" type="com.monkey.wx.domain.WxConfig">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="app_secret" jdbcType="VARCHAR" property="appSecret" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="aesKey" jdbcType="VARCHAR" property="aeskey" />
+    <result column="mch_id" jdbcType="VARCHAR" property="mchId" />
+    <result column="mch_key" jdbcType="VARCHAR" property="mchKey" />
+    <result column="cert_path" jdbcType="VARCHAR" property="certPath" />
+    <result column="zf_type" jdbcType="VARCHAR" property="zfType" />
+    <result column="zf_info" jdbcType="VARCHAR" property="zfInfo" />
+    <result column="template_bill_success" jdbcType="VARCHAR" property="templateBillSuccess" />
+    <result column="template_bill_fail" jdbcType="VARCHAR" property="templateBillFail" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -42,25 +44,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -71,161 +73,182 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
-    id, app_id, app_secret, token, aesKey, mch_id, mch_key, cert_path, zf_type, zf_info
+  <sql id="Base_Column_List">
+    id, app_id, app_secret, token, aesKey, mch_id, mch_key, cert_path, zf_type, zf_info, 
+    template_bill_success, template_bill_fail
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.monkey.wx.domain.WxConfigExample" >
+  <select id="selectByExample" parameterType="com.monkey.wx.domain.WxConfigExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     from wx_config
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from wx_config
     where id = #{id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from wx_config
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.monkey.wx.domain.WxConfigExample" >
+  <delete id="deleteByExample" parameterType="com.monkey.wx.domain.WxConfigExample">
     delete from wx_config
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.monkey.wx.domain.WxConfig" >
+  <insert id="insert" parameterType="com.monkey.wx.domain.WxConfig">
     insert into wx_config (id, app_id, app_secret, 
       token, aesKey, mch_id, 
       mch_key, cert_path, zf_type, 
-      zf_info)
+      zf_info, template_bill_success, template_bill_fail
+      )
     values (#{id,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR}, #{appSecret,jdbcType=VARCHAR}, 
       #{token,jdbcType=VARCHAR}, #{aeskey,jdbcType=VARCHAR}, #{mchId,jdbcType=VARCHAR}, 
       #{mchKey,jdbcType=VARCHAR}, #{certPath,jdbcType=VARCHAR}, #{zfType,jdbcType=VARCHAR}, 
-      #{zfInfo,jdbcType=VARCHAR})
+      #{zfInfo,jdbcType=VARCHAR}, #{templateBillSuccess,jdbcType=VARCHAR}, #{templateBillFail,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.monkey.wx.domain.WxConfig" >
+  <insert id="insertSelective" parameterType="com.monkey.wx.domain.WxConfig">
     insert into wx_config
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="appId != null" >
+      <if test="appId != null">
         app_id,
       </if>
-      <if test="appSecret != null" >
+      <if test="appSecret != null">
         app_secret,
       </if>
-      <if test="token != null" >
+      <if test="token != null">
         token,
       </if>
-      <if test="aeskey != null" >
+      <if test="aeskey != null">
         aesKey,
       </if>
-      <if test="mchId != null" >
+      <if test="mchId != null">
         mch_id,
       </if>
-      <if test="mchKey != null" >
+      <if test="mchKey != null">
         mch_key,
       </if>
-      <if test="certPath != null" >
+      <if test="certPath != null">
         cert_path,
       </if>
-      <if test="zfType != null" >
+      <if test="zfType != null">
         zf_type,
       </if>
-      <if test="zfInfo != null" >
+      <if test="zfInfo != null">
         zf_info,
       </if>
+      <if test="templateBillSuccess != null">
+        template_bill_success,
+      </if>
+      <if test="templateBillFail != null">
+        template_bill_fail,
+      </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="appId != null" >
+      <if test="appId != null">
         #{appId,jdbcType=VARCHAR},
       </if>
-      <if test="appSecret != null" >
+      <if test="appSecret != null">
         #{appSecret,jdbcType=VARCHAR},
       </if>
-      <if test="token != null" >
+      <if test="token != null">
         #{token,jdbcType=VARCHAR},
       </if>
-      <if test="aeskey != null" >
+      <if test="aeskey != null">
         #{aeskey,jdbcType=VARCHAR},
       </if>
-      <if test="mchId != null" >
+      <if test="mchId != null">
         #{mchId,jdbcType=VARCHAR},
       </if>
-      <if test="mchKey != null" >
+      <if test="mchKey != null">
         #{mchKey,jdbcType=VARCHAR},
       </if>
-      <if test="certPath != null" >
+      <if test="certPath != null">
         #{certPath,jdbcType=VARCHAR},
       </if>
-      <if test="zfType != null" >
+      <if test="zfType != null">
         #{zfType,jdbcType=VARCHAR},
       </if>
-      <if test="zfInfo != null" >
+      <if test="zfInfo != null">
         #{zfInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="templateBillSuccess != null">
+        #{templateBillSuccess,jdbcType=VARCHAR},
+      </if>
+      <if test="templateBillFail != null">
+        #{templateBillFail,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.monkey.wx.domain.WxConfigExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.monkey.wx.domain.WxConfigExample" resultType="java.lang.Integer">
     select count(*) from wx_config
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update wx_config
-    <set >
-      <if test="record.id != null" >
+    <set>
+      <if test="record.id != null">
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.appId != null" >
+      <if test="record.appId != null">
         app_id = #{record.appId,jdbcType=VARCHAR},
       </if>
-      <if test="record.appSecret != null" >
+      <if test="record.appSecret != null">
         app_secret = #{record.appSecret,jdbcType=VARCHAR},
       </if>
-      <if test="record.token != null" >
+      <if test="record.token != null">
         token = #{record.token,jdbcType=VARCHAR},
       </if>
-      <if test="record.aeskey != null" >
+      <if test="record.aeskey != null">
         aesKey = #{record.aeskey,jdbcType=VARCHAR},
       </if>
-      <if test="record.mchId != null" >
+      <if test="record.mchId != null">
         mch_id = #{record.mchId,jdbcType=VARCHAR},
       </if>
-      <if test="record.mchKey != null" >
+      <if test="record.mchKey != null">
         mch_key = #{record.mchKey,jdbcType=VARCHAR},
       </if>
-      <if test="record.certPath != null" >
+      <if test="record.certPath != null">
         cert_path = #{record.certPath,jdbcType=VARCHAR},
       </if>
-      <if test="record.zfType != null" >
+      <if test="record.zfType != null">
         zf_type = #{record.zfType,jdbcType=VARCHAR},
       </if>
-      <if test="record.zfInfo != null" >
+      <if test="record.zfInfo != null">
         zf_info = #{record.zfInfo,jdbcType=VARCHAR},
       </if>
+      <if test="record.templateBillSuccess != null">
+        template_bill_success = #{record.templateBillSuccess,jdbcType=VARCHAR},
+      </if>
+      <if test="record.templateBillFail != null">
+        template_bill_fail = #{record.templateBillFail,jdbcType=VARCHAR},
+      </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update wx_config
     set id = #{record.id,jdbcType=VARCHAR},
       app_id = #{record.appId,jdbcType=VARCHAR},
@@ -236,45 +259,53 @@
       mch_key = #{record.mchKey,jdbcType=VARCHAR},
       cert_path = #{record.certPath,jdbcType=VARCHAR},
       zf_type = #{record.zfType,jdbcType=VARCHAR},
-      zf_info = #{record.zfInfo,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
+      zf_info = #{record.zfInfo,jdbcType=VARCHAR},
+      template_bill_success = #{record.templateBillSuccess,jdbcType=VARCHAR},
+      template_bill_fail = #{record.templateBillFail,jdbcType=VARCHAR}
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.monkey.wx.domain.WxConfig" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.monkey.wx.domain.WxConfig">
     update wx_config
-    <set >
-      <if test="appId != null" >
+    <set>
+      <if test="appId != null">
         app_id = #{appId,jdbcType=VARCHAR},
       </if>
-      <if test="appSecret != null" >
+      <if test="appSecret != null">
         app_secret = #{appSecret,jdbcType=VARCHAR},
       </if>
-      <if test="token != null" >
+      <if test="token != null">
         token = #{token,jdbcType=VARCHAR},
       </if>
-      <if test="aeskey != null" >
+      <if test="aeskey != null">
         aesKey = #{aeskey,jdbcType=VARCHAR},
       </if>
-      <if test="mchId != null" >
+      <if test="mchId != null">
         mch_id = #{mchId,jdbcType=VARCHAR},
       </if>
-      <if test="mchKey != null" >
+      <if test="mchKey != null">
         mch_key = #{mchKey,jdbcType=VARCHAR},
       </if>
-      <if test="certPath != null" >
+      <if test="certPath != null">
         cert_path = #{certPath,jdbcType=VARCHAR},
       </if>
-      <if test="zfType != null" >
+      <if test="zfType != null">
         zf_type = #{zfType,jdbcType=VARCHAR},
       </if>
-      <if test="zfInfo != null" >
+      <if test="zfInfo != null">
         zf_info = #{zfInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="templateBillSuccess != null">
+        template_bill_success = #{templateBillSuccess,jdbcType=VARCHAR},
+      </if>
+      <if test="templateBillFail != null">
+        template_bill_fail = #{templateBillFail,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.monkey.wx.domain.WxConfig" >
+  <update id="updateByPrimaryKey" parameterType="com.monkey.wx.domain.WxConfig">
     update wx_config
     set app_id = #{appId,jdbcType=VARCHAR},
       app_secret = #{appSecret,jdbcType=VARCHAR},
@@ -284,7 +315,9 @@
       mch_key = #{mchKey,jdbcType=VARCHAR},
       cert_path = #{certPath,jdbcType=VARCHAR},
       zf_type = #{zfType,jdbcType=VARCHAR},
-      zf_info = #{zfInfo,jdbcType=VARCHAR}
+      zf_info = #{zfInfo,jdbcType=VARCHAR},
+      template_bill_success = #{templateBillSuccess,jdbcType=VARCHAR},
+      template_bill_fail = #{templateBillFail,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

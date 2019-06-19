@@ -21,6 +21,10 @@ public class WxConfig {
 
     private String zfInfo;
 
+    private String templateBillSuccess;
+
+    private String templateBillFail;
+
     public String getId() {
         return id;
     }
@@ -99,5 +103,21 @@ public class WxConfig {
 
     public void setZfInfo(String zfInfo) {
         this.zfInfo = zfInfo == null ? null : zfInfo.trim();
+    }
+
+    public String getTemplateBillSuccess() {
+        return templateBillSuccess;
+    }
+
+    public void setTemplateBillSuccess(String templateBillSuccess) {
+        this.templateBillSuccess = templateBillSuccess == null ? null : templateBillSuccess.trim();
+    }
+
+    public String getTemplateBillFail() {
+        return templateBillFail;
+    }
+
+    public void setTemplateBillFail(String templateBillFail) {
+        this.templateBillFail = templateBillFail == null ? null : templateBillFail.trim();
     }
 }

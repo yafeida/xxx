@@ -37,7 +37,7 @@ public class WxOrderController extends BaseController {
 	@RequestMapping("order")	
     @RequiresPermissions("order:list")
     public String index() {
-        return "wx/order/order";
+        return "wx/wxOrder";
     }
 	
 	@Log("获取订单信息")

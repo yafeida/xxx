@@ -27,7 +27,7 @@ function checkPhoneNumber(phone){
 		if(phone.length == 11){
 			$.ajax({
 				type:"post",
-				url:'getPhoneInfo',
+				url:'../../getPhoneInfo',
 				data:'phone='+phone,
 				dataType:"json",
 				success: function(data){
@@ -115,6 +115,7 @@ function changeFee(){
 //提交充值
 //提交时需要添加一个open_id
 function submitForm(){
+	alert(1);
 	//页面显示支付等待
 	$.showLoading("正在发起支付请求");
 	var phone = $("#phone").val();
@@ -137,12 +138,21 @@ function submitForm(){
 	console.log("折扣价："+discount+"    "+"金额:"+amount+"    "+"手机号："+phone);
 	$.ajax({
 		type:"post",
-		url:'submitRecharge',
-		data:'phone='+phone+'&amount='+amount+'&discount='+discount,
+		url:'../../pay',
+		data:{
+			userid:$("#userid").val(),
+			agent:$("#agent").val(),
+			phone:phone,
+			fee:amount,
+			disprice:discount,
+			openId:$("#openId").val()
+		},
 		dataType:"json",
 		success: function(data){
+			$.hideLoading();
+			alert(data);
 			if(data.code == 0){
-				
+				alert("xx");
 			}else{
 				$.hideLoading();
 				alert("亲，支付失败，请关闭页面后重新打开。");

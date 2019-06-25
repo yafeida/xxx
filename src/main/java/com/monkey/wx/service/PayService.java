@@ -52,7 +52,7 @@ public class PayService {
 	 */
 	public String pay(HttpServletRequest request){
 		String ip = IPUtils.getIpAddr(request);//获取IP地址
-		String userId = request.getParameter("userId");//获取客户ID
+		String userId = request.getParameter("userid");//获取客户ID
 		String agent = request.getParameter("agent");//代理
 		String phone = request.getParameter("phone");//手机号
 		String fee = request.getParameter("fee");//原价

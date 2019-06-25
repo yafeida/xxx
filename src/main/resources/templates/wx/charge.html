@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <title>运营商客户服务中心</title>
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-<link rel="stylesheet" data-th-href="@{css/weui/weui.css}">
-<link rel="stylesheet" data-th-href="@{css/weui/weuix.css}">
-<script data-th-src="@{js/jquery.min.js}"></script>
-<script data-th-src="@{js/weui/zepto.min.js}"></script>
-<script data-th-src="@{js/weui/zepto.weui.js}"></script>
-<script data-th-src="@{js/weui/iscroll-lite.js}"></script>
-<script data-th-src="@{js/app/wx/charge.js}"></script>
+<link rel="stylesheet" data-th-href="@{../../css/weui/weui.css}">
+<link rel="stylesheet" data-th-href="@{../../css/weui/weuix.css}">
+<script data-th-src="@{../../js/jquery.min.js}"></script>
+<script data-th-src="@{../../js/weui/zepto.min.js}"></script>
+<script data-th-src="@{../../js/weui/zepto.weui.js}"></script>
+<script data-th-src="@{../../js/weui/iscroll-lite.js}"></script>
+<script data-th-src="@{../../js/app/wx/charge.js}"></script>
 <style type="text/css">
 	html{
 		touch-action: pan-y;			/* 启用单指垂直平移手势，该样式取消后,页面会出现手势滑动警告 */
@@ -25,6 +25,9 @@
 			<div class="weui-navbar__item">视频会员</div>
 		</div>
 	</div>
+	<input id="openId" type="hidden" th:value="${openId}"/>
+	<input id="userid" type="hidden" th:value="${userid}"/>
+	<input id="agent" type="hidden" th:value="${agent}"/>
 	<div class="weui-cells">
 		<div class="weui-cell">
 			<div class="weui_cell__bd">
@@ -70,7 +73,7 @@
 		<div class="weui-grids grids-small">
 			<a href="javascript:;" class="grid">
 				<div class="weui-grid__icon">
-					<img src="../img/qq.png" alt="">
+					<img src="../../../img/qq.png" alt="">
 				</div>
 				<p class="weui-grid__label">Q币充值</p>
 			</a> 

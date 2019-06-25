@@ -94,7 +94,7 @@ public class WxMenuController {
             URL requestURL = new URL(request.getRequestURL().toString());
             String url = this.wxService.switchoverTo(appid).oauth2buildAuthorizationUrl(
                 String.format("%s://%s/wx/redirect/%s/greet", requestURL.getProtocol(), requestURL.getHost(), appid),
-                WxConsts.OAuth2Scope.SNSAPI_USERINFO, null);
+                WxConsts.OAuth2Scope.SNSAPI_BASE, null);
             button34.setUrl(url);
         }
 
